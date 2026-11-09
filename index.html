@@ -151,6 +151,73 @@ tbody tr,table tr{transition:background .15s}table tr:hover td{background:var(--
 #nav span{background:#fff;color:var(--ink);padding:12px 14px;border:1px solid var(--line)}
 @media screen{.page{zoom:var(--z,1)}}
 @media print{.noprint,#nav{display:none!important}}
+/* ---------- Celular e tablet estreito: páginas viram blocos em uma coluna ---------- */
+@media screen and (max-width:900px){
+  html,body{background:#ece8e4}
+  .page{width:auto;height:auto;min-height:0;margin:0 0 10px;zoom:1!important}
+  .body{padding:26px 18px 22px}
+  .foot{flex-basis:44px;height:44px;padding:0 18px;font-size:10px}
+  .foot>span:nth-child(2){display:none}
+  .brand .lg{height:16px}
+  h2{font-size:27px;margin-bottom:20px}
+  h3{font-size:14px}
+  p{font-size:16px;line-height:1.6;hyphens:auto}
+  .kicker{font-size:11px;margin-bottom:10px}
+  .small{font-size:13px}
+  .lab{font-size:10.5px}
+  .num{font-size:34px!important}
+  ul.clean li{font-size:16px!important;padding:7px 0}
+  .grid2,.grid-txt-fig,.grid-txt-chart,.grid-txt-canvas,.model,.price,.cover,.cards,.timeline,
+  .body [style*="grid-template-columns"],.page [style*="grid-template-columns"]{display:grid;grid-template-columns:1fr!important;gap:22px!important}
+  [style*="columns:2"]{columns:1!important}
+  .vc{margin:0}
+  .cover .img{height:300px}
+  .cover .txt{padding:24px 18px 26px;gap:22px}
+  .cover h1{font-size:32px}
+  .cover .sub{font-size:18px}
+  .cover .brand .lg{height:28px}
+  .divider .body{padding:70px 18px 34px}
+  .divider h2{font-size:40px}
+  .figbox{height:260px!important}
+  .chart{height:auto;width:100%;margin:0}
+  .cbox{height:330px}
+  .photos{grid-template-columns:1fr 1fr;grid-template-rows:none;gap:8px}
+  .photos div{aspect-ratio:4/3}
+  table{display:block;overflow-x:auto;white-space:nowrap;font-size:13px}
+  th{font-size:10px;padding:8px}
+  td{padding:10px 8px}
+  .price .l{padding:30px 18px}
+  .price .l h2{font-size:32px!important}
+  .price .r{padding:24px 18px 26px;gap:22px}
+  .price .big{font-size:52px}
+  .price .range{font-size:26px}
+  .price .alt{font-size:15px}
+  .timeline{border-top:0;border-left:2px solid var(--ink);padding-left:18px}
+  .tl{padding:0 0 4px}
+  .tl::before{top:6px;left:-26px}
+  .tl .d{font-size:24px}
+  .tl li{font-size:15px}
+  .card p{font-size:15px}
+  .phone,.ig,.portal{height:auto;padding-bottom:64px}
+  .phone{padding:14px 14px 64px}
+  .ig .im{height:220px}.portal .im{height:200px}
+  .strip{grid-template-columns:repeat(5,1fr);gap:6px}
+  .story{width:100%;max-width:300px;height:520px}
+  .logic li{font-size:15.5px}
+  .quote{font-size:24px;text-align:left}
+  .sim{max-width:none}
+  .page h2[style*="font-size"]{font-size:30px!important}
+  .divider h2{font-size:40px!important}
+  .body p[style*="font-size"]{font-size:16px!important}
+  .kicker{text-align:left!important}
+  .cbox .hint{display:none}
+  .chart{max-height:540px;width:auto;max-width:100%;margin:0 auto}
+  .grid-txt-chart{justify-items:center}
+  #nav{right:10px;bottom:10px}
+  #n-print{display:none}
+  #nav button,#nav span{padding:10px 12px}
+}
+
 .quote{font:italic 400 30px/1.45 var(--body);color:var(--ink);max-width:1100px}
 </style>
 </head>
@@ -442,7 +509,7 @@ const D={"absorcao": {"labels": ["at\u00e9 30", "31 a 60", "61 a 90", "91 a 180"
 const BRL=v=>"R$ "+Math.round(v).toLocaleString("pt-BR");
 const ORANGE="#E8500A", INK="#1b1b1b", GRID="#e6e1dc";
 /* Ajuste ao tamanho da tela: a página de 1600 px encolhe para caber */
-function fit(){const z=Math.min(1,(window.innerWidth-48)/1600);document.documentElement.style.setProperty("--z",z)}
+function fit(){const z=window.innerWidth<=900?1:Math.min(1,(window.innerWidth-48)/1600);document.documentElement.style.setProperty("--z",z)}
 fit();addEventListener("resize",fit);
 /* Gráficos */
 if(window.Chart){
